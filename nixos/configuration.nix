@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports =
@@ -18,6 +18,21 @@
 
   # Allow proprietary software
   nixpkgs.config.allowUnfree = true;
+
+  # Enable Fish
+  # NOTE: Don't know if I need this since its in home-manager config
+  # programs.fish.enable = true;
+
+  # Fish autocomplete for system packages
+  environment.pathsToLink = [
+    "/share/fish"
+  ];
+
+  # Installing Fonts
+  fonts.fonts = with pkgs; [
+    jetbrains-mono
+    #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
@@ -51,7 +66,10 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
+    earlySetup = true;
+    packages = with pkgs; [ terminus_font ];
+    font = "ter-u28n";
+    # font = "Lat2-Terminus16";
     keyMap = "us";
   #   useXkbConfig = true; # use xkbOptions in tty.
   };
@@ -80,10 +98,11 @@
   services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.rahul = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" ]; # Enable ‘sudo’ for the user.
     initialPassword = "password";
+    shell = pkgs.fish;
     # packages = with pkgs; [
     #   firefox
     #   git
