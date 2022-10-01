@@ -53,12 +53,3 @@ abbr -a gc "git checkout"
 abbr -a gs "git status"
 abbr -a gcm "git commit -m "
 
-# base16 themes work w/ tmux
-# BUG: https://github.com/tomyun/base16-fish/issues/7
-if test -f ~/.config/fish/conf.d/base16.fish
-  rm ~/.config/fish/conf.d/base16.fish
-end
-if test -n "$base16_theme" && status --is-interactive && test -z "$TMUX"
-  base16-$base16_theme
-end
-
