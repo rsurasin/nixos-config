@@ -25,6 +25,7 @@
     nixosConfigurations = {
       framework = lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit user; }; # Pass flake vars to external config files
         modules = [ 
           ./nixos/configuration.nix 
           ./hosts/framework/12th-gen-intel/hardware-configuration.nix 
@@ -33,6 +34,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit user; }; # Pass flake vars
             home-manager.users.${user} = {
               imports = [ ./nixos/home.nix ];
             };
