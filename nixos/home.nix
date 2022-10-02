@@ -23,6 +23,19 @@
       tree                # Show file structure
       urlview             # Extract urls from text
       fpp                 # Presents files for selection
+      gcc                 # GNU Compiler Collection
+
+      # Language Servers
+      rust-analyzer
+      nodePackages.pyright
+      nodePackages.typescript-language-server
+      sumneko-lua-language-server
+      nodePackages.vscode-langservers-extracted        # html, css, & json
+      nodePackages.dockerfile-language-server-nodejs
+      nodePackages.yaml-language-server
+      gopls
+      rnix-lsp
+      # TODO: Package graphql-language-service-cli
 
       # Fonts
       jetbrains-mono
@@ -129,5 +142,9 @@
 
   # Tmux config
   home.file.".tmux.conf".source = ../home/tmux.conf;
+
+  # Neovim config
+  home.file.".config/nvim".source = ../home/config/nvim;
+  home.file.".config/nvim".recursive = true;
 
 }
