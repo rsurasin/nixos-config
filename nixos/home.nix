@@ -39,6 +39,7 @@
 
       # Fonts
       jetbrains-mono
+      roboto
 
       # Applications
       firefox             # Browser
@@ -146,5 +147,9 @@
   # Neovim config
   home.file.".config/nvim".source = ../home/config/nvim;
   home.file.".config/nvim".recursive = true;
+
+  # i3 config
+  home.file.".config/i3".source = ../home/config/i3;
+  home.file.".config/i3".recursive = true;
 
 }

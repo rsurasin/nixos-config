@@ -6,7 +6,6 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
-      # "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git";  }}/framework/12th-gen-intel"
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
@@ -39,4 +38,7 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # high-dpi configuration
+  hardware.video.hidpi.enable = true;
 }

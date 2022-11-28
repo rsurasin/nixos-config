@@ -16,6 +16,9 @@
     extraOptions = "experimental-features = nix-command flakes";
   };
 
+  # Updating Firmware for Framework
+  services.fwupd.enable = true;
+
   # Allow proprietary software
   nixpkgs.config.allowUnfree = true;
 
@@ -44,7 +47,7 @@
   boot.loader.grub = {
     enable = true;
     version = 2;
-    device = "nodev"; # Generate boot menu but not actually installed
+    devices = [ "nodev" ]; # Device in which boot loader will be installed
     useOSProber = true; # Dual boot support
     efiSupport = true;
     enableCryptodisk = true; # Luks encryption
@@ -76,16 +79,61 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
+  services.xserver.desktopManager = {
+    xterm.enable = false;
+    xfce = {
+      enable = true;
+      noDesktop = true;
+      enableXfwm = false;
+    };
+  };
+  services.xserver.displayManager.sessionCommands = ''
+    ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
+      Xcursor.theme: Adwaita
+      Xcursor.size: 32
+      Xft.dpi: 144
+      Xft.autohint: 0
+      Xft.lcdfilter: lcddefault
+      Xft.hintstyle: hintfull
+      Xft.hinting: 1
+      Xft.antialias: 1
+      Xft.rgba: rgb
+    ''}
+  '';
 
   # Enable the GNOME Desktop Environment.
+  # services.xserver.desktopManager.gnome.enable = true;
+
+  # Enable i3 Window Manager
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  
+  services.xserver.displayManager.defaultSession = "xfce+i3";
+  services.xserver = {
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        rofi
+        i3status
+        i3lock
+        nitrogen
+      ];
+    };
+  };
+
+  # Intel GPU Settings
+  services.xserver.videoDrivers = [ "modesetting" ];
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-  services.xserver.xkbOptions = "ctrl:swapcaps"; # map caps to escape.
+  services.xserver.xkbOptions = "ctrl:nocaps"; # map caps to ctrl.
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -135,6 +183,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.touchpad.naturalScrolling = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
