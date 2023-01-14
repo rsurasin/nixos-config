@@ -34,7 +34,7 @@
   # Installing Fonts
   fonts.fonts = with pkgs; [
     jetbrains-mono
-    #(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
 
   # Use the systemd-boot EFI boot loader.
