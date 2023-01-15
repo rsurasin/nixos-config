@@ -170,8 +170,11 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter-refactor',
         'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    run = ':TSUpdate',
-    branch = '0.5-compat',
+    -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
     config = [[require('plugin/treesitter')]]
   }
   -- Flutter
