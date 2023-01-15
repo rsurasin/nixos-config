@@ -34,6 +34,7 @@
   # Installing Fonts
   fonts.fonts = with pkgs; [
     jetbrains-mono
+    roboto
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
 
@@ -184,6 +185,19 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
   services.xserver.libinput.touchpad.naturalScrolling = true;
+
+  # Power Management - Framework laptop
+  services.tlp.enable = true;
+  powerManagement.powertop.enable = true;
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
+  };
+
+  # Fingerprint - Framework laptop
+  services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = true;
+  security.pam.services.xscreensaver.fprintAuth = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
