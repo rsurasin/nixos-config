@@ -106,7 +106,8 @@ return require('packer').startup(function(use)
   -- Fuzzy Finder
   use {
     'nvim-telescope/telescope.nvim',
-    config = [[require('plugin/telescope')]],
+    branch = '0.1.x',
+    config = function() require('plugin/telescope') end,
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' } },
     cmd = 'Telescope',
     module = 'telescope',

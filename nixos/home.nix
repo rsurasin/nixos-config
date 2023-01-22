@@ -24,6 +24,8 @@
       urlview             # Extract urls from text
       fpp                 # Presents files for selection
       gcc                 # GNU Compiler Collection
+      gnumake             # Controls the generations of executables
+      cmake               # Cross-platform open-source build system generator
 
       # Language Servers
       rust-analyzer
