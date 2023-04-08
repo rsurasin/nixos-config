@@ -180,7 +180,7 @@
 
   # High Quality BlueTooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.hsphfpd.enable = true;
+  hardware.bluetooth.hsphfpd.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
