@@ -3,18 +3,27 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, hyprland, ... }: 
   let
     user = "rahul";
     system = "x86_64-linux";  # Which OS to use
     pkgs = import nixpkgs {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
+    pkgs-unstable = import nixpkgs-unstable {
       inherit system;
       config = { allowUnfree = true; };
     };
@@ -25,18 +34,31 @@
     nixosConfigurations = {
       framework = lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit user; }; # Pass flake vars to external config files
-        modules = [ 
-          ./nixos/configuration.nix 
-          ./hosts/framework/12th-gen-intel/hardware-configuration.nix 
+        specialArgs = { # Pass flake vars to external config files
+          inherit user;
+          inherit pkgs-unstable;
+        };
+        modules = [
+          ./nixos/configuration.nix
+          ./hosts/framework/12th-gen-intel/hardware-configuration.nix
           nixos-hardware.nixosModules.framework-12th-gen-intel
-          
+
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit user; }; # Pass flake vars
+            home-manager.extraSpecialArgs = { # Pass flake vars
+              inherit user;
+              inherit pkgs-unstable;
+            };
             home-manager.users.${user} = {
               imports = [ ./nixos/home.nix ];
+            };
+          }
+
+          hyprland.nixosModules.default {
+            programs.hyprland = {
+              enable = true;
+              xwayland.hidpi = true;
             };
           }
         ];
