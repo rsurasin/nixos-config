@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, pkgs-unstable, user, ... }:
 
 {
   home = {
@@ -23,9 +23,20 @@
       tree                # Show file structure
       urlview             # Extract urls from text
       fpp                 # Presents files for selection
+      ranger              # File manager
       gcc                 # GNU Compiler Collection
       gnumake             # Controls the generations of executables
       cmake               # Cross-platform open-source build system generator
+
+      # Wayland
+      pkgs-unstable.foot          # Terminal
+      pkgs-unstable.fuzzel        # App Launcher
+      pkgs-unstable.grim          # Screenshot cli & Screensharing
+      pkgs-unstable.slurp         # Monitor selection & Screensharing
+      pkgs-unstable.waybar        # Customizable bar
+      pkgs-unstable.swaybg        # Wallpaper
+      pkgs-unstable.cliphist      # Clipboard manager
+      pkgs-unstable.wf-recorder   # Screen Recording
 
       # Language Servers
       rust-analyzer
@@ -50,6 +61,9 @@
       spotify             # Music
       signal-desktop      # Messenging App
       obsidian            # Notes
+      flameshot           # Screenshot
+      mpv                 # Video Player
+      imv                 # Image Viewer
     ];
   };
 

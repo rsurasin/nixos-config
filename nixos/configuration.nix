@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, user, ... }:
+{ config, pkgs, pkgs-unstable, user, ... }:
 
 {
   imports =
@@ -80,14 +80,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.desktopManager = {
-    xterm.enable = false;
-    xfce = {
-      enable = true;
-      noDesktop = true;
-      enableXfwm = false;
-    };
-  };
+
   services.xserver.displayManager.sessionCommands = ''
     ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
       Xcursor.theme: Adwaita
@@ -106,19 +99,11 @@
   # services.xserver.desktopManager.gnome.enable = true;
 
   # Enable i3 Window Manager
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.defaultSession = "xfce+i3";
-  services.xserver = {
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        rofi
-        i3status
-        i3lock
-        nitrogen
-      ];
-    };
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    wayland = true;
   };
+  services.xserver.displayManager.defaultSession = "hyprland";
 
   # Intel GPU Settings
   services.xserver.videoDrivers = [ "modesetting" ];
@@ -199,6 +184,9 @@
   security.pam.services.login.fprintAuth = true;
   security.pam.services.xscreensaver.fprintAuth = true;
 
+  # Screen Lock - Swaylock
+  security.pam.services.swaylock = {};
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
@@ -218,6 +206,19 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    xdg-utils
+    pkgs-unstable.wayland
+    pkgs-unstable.mako                   # Simple Notification Daemon
+    pkgs-unstable.qt6.qtwayland          # QT6 Framework
+    pkgs-unstable.wayland-utils          # Display Info about Protocols
+    pkgs-unstable.wayland-scanner        # Wayland Protocol
+    pkgs-unstable.wayland-protocols      # Wayland Protocol Extensions
+    pkgs-unstable.glfw-wayland           # Managing Input
+    pkgs-unstable.wev                    # Wayland Event Viewer
+    pkgs-unstable.wl-clipboard           # Copy/Paste Utilities
+    pkgs-unstable.wlr-randr              # Output/Display Configuration Tool
+    pkgs-unstable.swayidle               # Idle management daemon
+    pkgs-unstable.swaylock               # Screen Lock
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
