@@ -193,7 +193,7 @@ bar {
 exec_always nitrogen --restore
 
 # Lock Desktop
-bindsym $mod+Mod1+q exec i3lock # super + Alt + q
+bindsym $mod+Control+q exec i3lock # super + ctrl + q
 
 # Assign Programs to Workspaces
 for_window [class="firefox"] move to workspace $ws1
