@@ -28,6 +28,10 @@
       gnumake             # Controls the generations of executables
       cmake               # Cross-platform open-source build system generator
 
+      # Utilities
+      brightnessctl       # Control device brightness
+      playerctl           # Control media player
+
       # Wayland
       pkgs-unstable.foot          # Terminal
       pkgs-unstable.fuzzel        # App Launcher
@@ -135,4 +139,11 @@
   home.file.".config/i3".source = ../home/config/i3;
   home.file.".config/i3".recursive = true;
 
+  # Hyprland config
+  home.file.".config/hypr".source = ../home/config/hypr;
+  home.file.".config/hypr".recursive = true;
+
+  # Waybar config
+  home.file.".config/waybar".source = ../home/config/waybar;
+  home.file.".config/waybar".recursive = true;
 }

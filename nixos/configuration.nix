@@ -35,7 +35,8 @@
   fonts.fonts = with pkgs; [
     jetbrains-mono
     roboto
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    font-awesome_5
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ]; })
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -219,6 +220,7 @@
     pkgs-unstable.wlr-randr              # Output/Display Configuration Tool
     pkgs-unstable.swayidle               # Idle management daemon
     pkgs-unstable.swaylock               # Screen Lock
+    pkgs-unstable.wlogout                # Logout Menu
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

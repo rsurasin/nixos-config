@@ -26,6 +26,14 @@
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
       config = { allowUnfree = true; };
+      # waybar requires experimental features for wlr/workspaces
+      overlays = [
+        (self: super: {
+          waybar = super.waybar.overrideAttrs (oldAttrs: {
+            mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+          });
+        })
+      ];
     };
 
     lib = nixpkgs.lib;
