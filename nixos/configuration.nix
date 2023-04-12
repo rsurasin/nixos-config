@@ -35,7 +35,6 @@
   fonts.fonts = with pkgs; [
     jetbrains-mono
     roboto
-    font-awesome_5
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ]; })
   ];
 

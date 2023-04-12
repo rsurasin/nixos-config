@@ -21,9 +21,9 @@
 }
 
 #waybar {
-	font-family: 'JetBrainsMonoNerdFont', 'Font Awesome 5 Free', 'Roboto', sans-serif;
-	font-size: 0.9em;
-	font-weight: 400;
+  font-family: 'JetBrainsMonoNerdFont', 'Roboto', sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
   color: @base04;
   background: @base01;
   opacity: 0.8;
@@ -94,7 +94,10 @@
 
 #window {
   font-size: 0.9em;
-	font-weight: 400;
-	font-family: sans-serif;
+  font-weight: 400;
+  font-family: sans-serif;
 }
 
+#submap {
+    color: #ff8c00;
+}

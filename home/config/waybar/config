@@ -5,10 +5,15 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces", "cpu", "memory", "network"],
+    "modules-left": ["wlr/workspaces", "cpu", "memory", "network", "hyprland/submap"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "backlight", "battery", "clock"],
     // Modules configuration
+    "hyprland/submap": {
+        "format": "{}",
+        "max-length": 8,
+        "tooltip": true
+    },
     "wlr/workspaces": {
         "format": "{name}",
         "on-click": "activate",
@@ -67,7 +72,7 @@
         "format": "{:%a %I:%M %p}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
