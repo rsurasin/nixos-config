@@ -208,7 +208,6 @@
     git
     xdg-utils
     pkgs-unstable.wayland
-    pkgs-unstable.mako                   # Simple Notification Daemon
     pkgs-unstable.qt6.qtwayland          # QT6 Framework
     pkgs-unstable.wayland-utils          # Display Info about Protocols
     pkgs-unstable.wayland-scanner        # Wayland Protocol
@@ -217,9 +216,6 @@
     pkgs-unstable.wev                    # Wayland Event Viewer
     pkgs-unstable.wl-clipboard           # Copy/Paste Utilities
     pkgs-unstable.wlr-randr              # Output/Display Configuration Tool
-    pkgs-unstable.swayidle               # Idle management daemon
-    pkgs-unstable.swaylock               # Screen Lock
-    pkgs-unstable.wlogout                # Logout Menu
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
