@@ -33,18 +33,18 @@
       playerctl           # Control media player
 
       # Wayland
-      pkgs-unstable.foot          # Terminal
-      pkgs-unstable.fuzzel        # App Launcher
-      pkgs-unstable.mako          # Simple Notification Daemon
-      pkgs-unstable.grim          # Screenshot cli & Screensharing
-      pkgs-unstable.slurp         # Monitor selection & Screensharing
-      pkgs-unstable.waybar        # Customizable bar
-      pkgs-unstable.swaybg        # Wallpaper
-      pkgs-unstable.cliphist      # Clipboard manager
-      pkgs-unstable.wf-recorder   # Screen Recording
-      pkgs-unstable.swayidle      # Idle management daemon
-      pkgs-unstable.swaylock      # Screen Lock
-      pkgs-unstable.wlogout       # Logout Menu
+      pkgs-unstable.foot                  # Terminal
+      pkgs-unstable.fuzzel                # App Launcher
+      pkgs-unstable.mako                  # Simple Notification Daemon
+      pkgs-unstable.grim                  # Screenshot cli & Screensharing
+      pkgs-unstable.slurp                 # Monitor selection & Screensharing
+      pkgs-unstable.waybar                # Customizable bar
+      pkgs-unstable.swaybg                # Wallpaper
+      pkgs-unstable.cliphist              # Clipboard manager
+      pkgs-unstable.wf-recorder           # Screen Recording
+      pkgs-unstable.swayidle              # Idle management daemon
+      pkgs-unstable.swaylock-effects      # Screen Lock
+      pkgs-unstable.wlogout               # Logout Menu
 
       # Language Servers
       rust-analyzer
