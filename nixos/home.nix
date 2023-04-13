@@ -150,4 +150,8 @@
   # Waybar config
   home.file.".config/waybar".source = ../home/config/waybar;
   home.file.".config/waybar".recursive = true;
+
+  # Swaylock config
+  home.file.".config/swaylock".source = ../home/config/swaylock;
+  home.file.".config/swaylock".recursive = true;
 }
