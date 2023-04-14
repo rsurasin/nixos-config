@@ -21,7 +21,7 @@
 }
 
 #waybar {
-  font-family: 'JetBrainsMonoNerdFont', 'Roboto', sans-serif;
+  font-family: 'JetBrainsMono Nerd Font', 'Roboto', sans-serif;
   font-size: 0.9em;
   font-weight: 400;
   color: @base04;
