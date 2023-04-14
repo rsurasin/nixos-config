@@ -120,6 +120,32 @@
     tmux.enable = true;
     tmux.extraConfig = builtins.readFile ../home/tmux.conf;
 
+    # Foot
+    foot.package = pkgs-unstable.foot;
+    foot.enable = true;
+    foot.server.enable = true;
+    foot.settings = {
+      main = {
+        term = "xterm-256color";
+        font = "JetBrainsMono Nerd Font:size=9.5";
+        dpi-aware = "auto";
+      };
+
+      scrollback = {
+        lines = "100000";
+      };
+
+      cursor = {
+        # Gruvbox
+        # Note: Themes - https://codeberg.org/dnkl/foot/src/branch/master/themes
+        color = "282828 ebdbb2";
+      };
+
+      mouse = {
+        hide-when-typing = "yes";
+      };
+    };
+
   };
 
   # Fish config (functions)
