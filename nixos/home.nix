@@ -27,6 +27,7 @@
       gcc                 # GNU Compiler Collection
       gnumake             # Controls the generations of executables
       cmake               # Cross-platform open-source build system generator
+      git-crypt           # Encryption for git
 
       # Utilities
       brightnessctl       # Control device brightness
@@ -72,6 +73,7 @@
       flameshot           # Screenshot
       mpv                 # Video Player
       imv                 # Image Viewer
+      sioyek              # PDF Viewer
     ];
   };
 
