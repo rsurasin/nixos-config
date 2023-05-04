@@ -50,9 +50,8 @@
       # Language Servers
       rust-analyzer
       nodePackages.pyright
-      nodePackages.typescript-language-server
-      sumneko-lua-language-server
-      nodePackages.vscode-langservers-extracted        # html, css, & json
+      pkgs-unstable.lua-language-server
+      nodePackages.vscode-langservers-extracted        # eslint, html, css, & json
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.yaml-language-server
       gopls
