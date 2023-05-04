@@ -20,10 +20,6 @@ vim.keymap.set("n", "<leader>+", "<C-W>5+", opts) -- Current buffer window resiz
 vim.keymap.set("n", "<leader>d", ":bd<CR>", opts) -- Delete Buffer
 
 -- Lazy Loaded Plugins Keymaps
--- nvim-tree keymap
--- Open/close nvim-tree
-vim.keymap.set("n", "<leader>o", "<cmd>NvimTreeToggle<cr>", opts)
-
 -- telescope keymap
 -- Search for files & open projects
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
@@ -46,3 +42,5 @@ vim.keymap.set("n", "gr", "<cmd>lua require('telescope.builtin').lsp_references(
 vim.keymap.set("n", "gI", "<cmd>Telescope lsp_implementations<cr>", opts)
 vim.keymap.set("n", "<leader>wd", "<cmd>Telescope lsp_document_symbols<cr>", opts)
 vim.keymap.set("n", "<leader>ww", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", { silent = true, buffer = true })
+-- Undotree
+vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", opts)
