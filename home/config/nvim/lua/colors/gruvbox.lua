@@ -1,17 +1,17 @@
 -- setup must be called before loading the colorscheme
 -- Default options:
 require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = true, -- will make italic comments and special strings
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  contrast = "hard", -- can be "hard" or "soft"
-  overrides = {},
+    overrides = {
+        SignColumn = { link = "Normal" },
+        LineNr = { fg = "LightGrey" },
+        GruvboxGreenSign = { bg = "" },
+        GruvboxOrangeSign = { bg = "" },
+        GruvboxPurpleSign = { bg = "" },
+        GruvboxYellowSign = { bg = "" },
+        GruvboxRedSign = { bg = "" },
+        GruvboxBlueSign = { bg = "" },
+        GruvboxAquaSign = { bg = "" },
+    }
 })
 
 vim.opt.background = "dark" -- or "light" for light mode
