@@ -92,6 +92,14 @@ local plugins = {
 
     -- Utility
     -- TODO: Look into editorconfig plugin
+    -- File Explorer
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = 'kyazdani42/nvim-web-devicons',
+        config = function() require('oil').setup() end,
+        cmd = 'Oil',
+    },
     -- Rooter: magically cd into project directory
     {
         'ahmedkhalf/project.nvim',
