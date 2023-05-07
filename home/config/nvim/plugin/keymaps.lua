@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>rs", "<cmd>Telescope grep_string<cr>", opts)
 -- Git Integration
 vim.keymap.set("n", "<leader>gf", "<cmd>Telescope git_files<cr>", opts)
 vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
-vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_bcommits<cr>", opts)
+vim.keymap.set("n", "<leader>gC", "<cmd>Telescope git_bcommits<cr>", opts)
 -- Search for/in Buffers
 vim.keymap.set("n", "<leader>ls", "<cmd>Telescope buffers<cr>", opts)
 vim.keymap.set("n", "<leader>rb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
