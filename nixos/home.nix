@@ -51,6 +51,7 @@
       rust-analyzer
       nodePackages.pyright
       pkgs-unstable.lua-language-server
+      nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted        # eslint, html, css, & json
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.yaml-language-server
