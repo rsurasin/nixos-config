@@ -95,10 +95,15 @@ local plugins = {
     -- File Explorer
     {
         'stevearc/oil.nvim',
-        opts = {},
+        opts = {
+            skip_confirm_for_simple_edits = true,
+            keymaps = {
+                ['q'] = 'actions.close',
+                ['<C-x>'] = 'actions.select_split',
+                ['<C-h>'] = false,
+            },
+        },
         dependencies = 'kyazdani42/nvim-web-devicons',
-        config = function() require('oil').setup() end,
-        cmd = 'Oil',
     },
     -- Rooter: magically cd into project directory
     {
