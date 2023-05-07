@@ -1,9 +1,10 @@
 -- setup must be called before loading the colorscheme
--- Default options:
+
 require("gruvbox").setup({
     overrides = {
-        SignColumn = { link = "Normal" },
         LineNr = { fg = "LightGrey" },
+        -- Transparent sign colors
+        SignColumn = { link = "Normal" },
         GruvboxGreenSign = { bg = "" },
         GruvboxOrangeSign = { bg = "" },
         GruvboxPurpleSign = { bg = "" },
