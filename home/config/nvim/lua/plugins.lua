@@ -92,6 +92,8 @@ local plugins = {
 
     -- Utility
     -- TODO: Look into editorconfig plugin
+    -- Git
+    'tpope/vim-fugitive',
     -- File Explorer
     {
         'stevearc/oil.nvim',
@@ -105,6 +107,8 @@ local plugins = {
         },
         dependencies = 'kyazdani42/nvim-web-devicons',
     },
+    -- Hydra: Submaps for Keymaps
+    'anuvyklack/hydra.nvim',
     -- Rooter: magically cd into project directory
     {
         'ahmedkhalf/project.nvim',
