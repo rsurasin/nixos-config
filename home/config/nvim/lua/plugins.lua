@@ -135,7 +135,7 @@ local plugins = {
     -- Git
     {
         'lewis6991/gitsigns.nvim',
-        config = function() require('plugin/gitsigns') end,
+        config = function() require('gitsigns').setup() end,
         dependencies = 'nvim-lua/plenary.nvim',
     },
 
