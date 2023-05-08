@@ -51,5 +51,5 @@ abbr -a g "git"
 abbr -a ga "git add -p"
 abbr -a gc "git checkout"
 abbr -a gs "git status"
-abbr -a gcm "git commit -m "
+abbr -a gcm "git commit -m"
 
