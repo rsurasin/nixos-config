@@ -11,9 +11,6 @@ set -gx EDITOR $VISUAL
 # Remove Greeting 
 set -U fish_greeting
 
-# THEMES: Dracula, gruvbox-dark
-# bat
-set -x BAT_THEME "gruvbox-dark"
 # manpage
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
