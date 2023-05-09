@@ -27,8 +27,8 @@ local plugins = {
     -- Gruvbox Theme w/ Plugin Support
     {
         "ellisonleao/gruvbox.nvim",
-        priority = 1000,
-        config = function() require('colors/gruvbox') end,
+        --priority = 1000,
+        --config = function() require('colors/gruvbox') end,
     },
     -- Dracula Theme w/ Plugin Support
     {
@@ -52,8 +52,7 @@ local plugins = {
         priority = 1000,
         name = 'catppuccin',
         -- NOTE: Uncomment when you want to use
-        -- config = function() require('colors/catppuccin') end,
-        lazy = true,
+        config = function() require('colors/catppuccin') end,
     },
     -- Doom One Theme w/ Plugin Support
     {
