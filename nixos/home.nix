@@ -104,10 +104,10 @@
         # BUG: https://github.com/tomyun/base16-fish/issues/7
         name = "base16-fish";
         src = pkgs.fetchFromGitHub {
-          owner = "twiggley";
+          owner = "rsurasin";
           repo = "base16-fish";
-          rev = "3d5855be510e94156b4c9bde218d0d5a2bd81b7b";
-          sha256 = "kAq9LAsgjIBwEp3f1BMpEXohhXg8/EDAfH0RICIbgsA=";
+          rev = "880e650b94c8459c9aa5559ec715e5540a7fa661";
+          sha256 = "NUYm4qPyC4L/poE+hwyxfC5MnNhfEx1RBmRhb2XnVKc=";
         };
       }
     ];
@@ -121,32 +121,6 @@
     # Tmux
     tmux.enable = true;
     tmux.extraConfig = builtins.readFile ../home/tmux.conf;
-
-    # Foot
-    foot.package = pkgs-unstable.foot;
-    foot.enable = true;
-    foot.server.enable = true;
-    foot.settings = {
-      main = {
-        term = "xterm-256color";
-        font = "JetBrainsMono Nerd Font:size=9.5";
-        dpi-aware = "auto";
-      };
-
-      scrollback = {
-        lines = "100000";
-      };
-
-      cursor = {
-        # Gruvbox
-        # Note: Themes - https://codeberg.org/dnkl/foot/src/branch/master/themes
-        color = "282828 ebdbb2";
-      };
-
-      mouse = {
-        hide-when-typing = "yes";
-      };
-    };
 
   };
 

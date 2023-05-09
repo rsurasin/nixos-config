@@ -59,7 +59,7 @@
               inherit pkgs-unstable;
             };
             home-manager.users.${user} = {
-              imports = [ ./nixos/home.nix ];
+              imports = [ ./nixos ];
             };
           }
 
