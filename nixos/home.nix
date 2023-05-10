@@ -29,6 +29,9 @@
       cmake               # Cross-platform open-source build system generator
       git-crypt           # Encryption for git
 
+      pkgs-unstable.tree-sitter    # Parser Generator Tool
+      pkgs-unstable.nodejs         # JS runtime environment
+
       # Utilities
       brightnessctl       # Control device brightness
       playerctl           # Control media player
