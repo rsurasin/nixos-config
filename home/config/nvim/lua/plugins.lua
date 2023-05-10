@@ -65,7 +65,7 @@ local plugins = {
     -- Bufferline
     {
         'akinsho/bufferline.nvim',
-        version = 'v2.*',
+        version = '*',
         config = function() require('plugin/nvim-bufferline') end,
         dependencies = 'kyazdani42/nvim-web-devicons',
     },
