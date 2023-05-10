@@ -13,15 +13,19 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, hyprland, ... }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, hyprland, neovim-nightly, ... }@inputs:
   let
     user = "rahul";
     system = "x86_64-linux";  # Which OS to use
     pkgs = import nixpkgs {
       inherit system;
       config = { allowUnfree = true; };
+      overlays = [ inputs.neovim-nightly.overlay ];
     };
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
@@ -44,6 +48,7 @@
         inherit system;
         specialArgs = { # Pass flake vars to external config files
           inherit user;
+          inherit pkgs;
           inherit pkgs-unstable;
         };
         modules = [
@@ -56,6 +61,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { # Pass flake vars
               inherit user;
+              inherit pkgs;
               inherit pkgs-unstable;
             };
             home-manager.users.${user} = {
