@@ -39,7 +39,7 @@ function cdf
 end
 
 # abbreviations
-abbr -a cl "clear"
+abbr -a cl "clear -x"
 abbr -a nv "nvim"
 abbr -a l "exa"
 abbr -a ll "exa -l"
