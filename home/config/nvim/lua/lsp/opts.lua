@@ -17,7 +17,7 @@ M = {
         set_keymap('n', 'gD', vim.lsp.buf.declaration, bufopts)
         set_keymap('n', 'gd', vim.lsp.buf.definition, bufopts)
         set_keymap('n', 'K', vim.lsp.buf.hover, bufopts)
-        set_keymap('i', '<C-s>', vim.lsp.buf.signature_help, bufopts)
+        set_keymap('i', '<C-h>', vim.lsp.buf.signature_help, bufopts)
         set_keymap('n', 'gT', vim.lsp.buf.type_definition, bufopts)
         set_keymap('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
         set_keymap('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
