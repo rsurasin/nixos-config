@@ -9,7 +9,7 @@
       main = {
         term = "xterm-256color";
         font = "JetBrainsMono Nerd Font:size=9.5";
-        dpi-aware = "auto";
+        dpi-aware = "yes";
       };
 
       scrollback = {
