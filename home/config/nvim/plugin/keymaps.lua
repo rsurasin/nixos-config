@@ -126,7 +126,7 @@ Hydra({
             vim.bo.modifiable = true
             -- Disable 'space:⋅' and IndentBlankline
             vim.opt.list = false
-            vim.cmd 'IndentBlanklineDisable'
+            vim.cmd 'IBLDisable'
             gitsigns.toggle_signs(true)
             gitsigns.toggle_linehl(true)
             gitsigns.toggle_deleted(true)
@@ -142,7 +142,7 @@ Hydra({
             gitsigns.toggle_deleted(false)
             -- Enable 'space:⋅' and IndentBlankline
             vim.opt.list = true
-            vim.cmd 'IndentBlanklineEnable'
+            vim.cmd 'IBLEnable'
         end,
     },
     mode = {'n','x'},
