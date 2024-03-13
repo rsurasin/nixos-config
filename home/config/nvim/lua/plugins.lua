@@ -161,6 +161,24 @@ local plugins = {
         },
         config = function() require('plugin/nvim-cmp') end,
     },
+    -- GitHub Copilot
+    {
+        'zbirenbaum/copilot.lua',
+        cmd = 'Copilot',
+        event = 'InsertEnter',
+        config = function ()
+            require('copilot').setup({
+                --suggestion = { enabled = false },
+                --panel = { enabled = false },
+            })
+        end,
+    },
+    --{
+    --    'zbirenbaum/copilot-cmp',
+    --    config = function ()
+    --        require('copilot_cmp').setup()
+    --    end,
+    --},
     -- Syntax Parser
     {
         'nvim-treesitter/nvim-treesitter',
