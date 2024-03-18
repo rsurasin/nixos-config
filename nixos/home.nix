@@ -7,6 +7,15 @@
 
     stateVersion = "22.05"; # Don't touch
 
+    # Consistent Cursor
+    pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+      size = 32;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
     packages = with pkgs; [
       # Dev Tools
       fish                # Shell
@@ -18,7 +27,7 @@
       bat                 # cat replacement
       ripgrep             # grep replacement
       fd                  # find replacement
-      exa                 # ls replacement
+      eza                 # ls replacement
       tealdeer            # Simplified man pages
       tree                # Show file structure
       urlview             # Extract urls from text
@@ -59,7 +68,7 @@
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.yaml-language-server
       gopls
-      rnix-lsp
+      nil # lsp for nix
       # TODO: Package graphql-language-service-cli
 
       # Fonts
@@ -72,11 +81,11 @@
       discord             # Messenging App
       spotify             # Music
       signal-desktop      # Messenging App
-      obsidian            # Notes
       flameshot           # Screenshot
       mpv                 # Video Player
       imv                 # Image Viewer
       sioyek              # PDF Viewer
+      pkgs-unstable.obsidian            # Notes
     ];
   };
 

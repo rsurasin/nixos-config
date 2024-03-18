@@ -41,9 +41,9 @@ end
 # abbreviations
 abbr -a cl "clear -x"
 abbr -a nv "nvim"
-abbr -a l "exa"
-abbr -a ll "exa -l"
-abbr -a lll "exa -la"
+abbr -a l "eza"
+abbr -a ll "eza -l"
+abbr -a lll "eza -la"
 abbr -a g "git"
 abbr -a ga "git add -p"
 abbr -a gc "git checkout"

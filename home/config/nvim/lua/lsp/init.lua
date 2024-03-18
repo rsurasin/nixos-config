@@ -10,7 +10,7 @@ local servers = {
     "yamlls",
     "gopls",
     "jsonls",
-    "rnix",
+    "nil_ls",
     "graphql",
 }
 
