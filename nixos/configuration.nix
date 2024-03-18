@@ -16,94 +16,84 @@
     extraOptions = "experimental-features = nix-command flakes";
   };
 
-  # Updating Firmware for Framework
-  services.fwupd.enable = true;
-
-  # Allow proprietary software
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Enable Fish
-  # NOTE: Don't know if I need this since its in home-manager config
-  # programs.fish.enable = true;
-
-  # Fish autocomplete for system packages
+  
+  # fish autocomplete for system packages
   environment.pathsToLink = [
     "/share/fish"
   ];
 
   # Installing Fonts
-  fonts.fonts = with pkgs; [
-    jetbrains-mono
-    roboto
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ]; })
-  ];
-
-  # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot"; # Needs to match w/ hardware-configuration
+  fonts = {
+    #fontconfig.enable = true;
+    packages = with pkgs; [
+      jetbrains-mono
+      roboto
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ]; })
+    ];
   };
 
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    devices = [ "nodev" ]; # Device in which boot loader will be installed
-    useOSProber = true; # Dual boot support
-    efiSupport = true;
-    enableCryptodisk = true; # Luks encryption
-    configurationLimit = 20; # Limit Generations so /boot doesn't run out of space
-  };
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 20;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
+  boot.initrd.luks.devices."luks-1767ddfc-5f2e-4735-97e3-393b031db9a3".device = "/dev/disk/by-uuid/1767ddfc-5f2e-4735-97e3-393b031db9a3";
+
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "America/New_York";
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
+  # Console config
   console = {
     earlySetup = true;
     packages = with pkgs; [ terminus_font ];
-    font = "ter-u28n";
-    # font = "Lat2-Terminus16";
+    font = "ter-i32b";
     keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
+    # useXkbConfig = true; # use xkbOptions in tty
   };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.xserver.displayManager.sessionCommands = ''
-    ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-      Xcursor.theme: Adwaita
-      Xcursor.size: 32
-      Xft.dpi: 144
-      Xft.autohint: 0
-      Xft.lcdfilter: lcddefault
-      Xft.hintstyle: hintfull
-      Xft.hinting: 1
-      Xft.antialias: 1
-      Xft.rgba: rgb
-    ''}
-  '';
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.desktopManager.gnome.enable = true;
-
-  # Enable i3 Window Manager
+  # Enable Wayland and Hyprland
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;
   };
   services.xserver.displayManager.defaultSession = "hyprland";
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+    xkbOptions = "ctrl:nocaps"; # map caps to ctrl
+  };
 
   # Intel GPU Settings
   services.xserver.videoDrivers = [ "modesetting" ];
@@ -117,16 +107,11 @@
     ];
   };
 
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "ctrl:nocaps"; # map caps to ctrl.
-
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
-  # Enable sound.
-  # sound.enable = true; # Disable for pipewire
-  # Pipewire
+  # Enable sound with pipewire.
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -137,33 +122,14 @@
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
-    # High Quality BlueTooth
-    media-session.config.bluez-monitor.rules = [
-      {
-        # Matches all cards
-        matches = [ { "device.name" = "~bluez_card.*"; } ];
-        actions = {
-          "update-props" = {
-            "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-            # mSBC is not expected to work on all headset + adapter combinations.
-            "bluez5.msbc-support" = true;
-            # SBC-XQ is not expected to work on all headset + adapter combinations.
-            "bluez5.sbc-xq-support" = true;
-          };
-        };
-      }
-      {
-        matches = [
-          # Matches all sources
-          { "node.name" = "~bluez_input.*"; }
-          # Matches all outputs
-          { "node.name" = "~bluez_output.*"; }
-        ];
-      }
-    ];
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+    
+    wireplumber.enable = true;
   };
 
-  # High Quality BlueTooth
+  # High Quality Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.hsphfpd.enable = false;
 
@@ -171,7 +137,7 @@
   services.xserver.libinput.enable = true;
   services.xserver.libinput.touchpad.naturalScrolling = true;
 
-  # Power Management - Framework laptop
+  # Power Management - Framework Laptop
   services.tlp.enable = true;
   powerManagement.powertop.enable = true;
   services.logind = {
@@ -179,26 +145,25 @@
     lidSwitchExternalPower = "lock";
   };
 
-  # Fingerprint - Framework laptop
+  # Fingerprint - Framework Laptop
   services.fprintd.enable = true;
   security.pam.services.login.fprintAuth = true;
-  security.pam.services.xscreensaver.fprintAuth = true;
-
-  # Screen Lock - Swaylock
   security.pam.services.swaylock = {};
+  security.pam.services.swaylock.fprintAuth = true;
+  security.polkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    initialPassword = "password";
+    description = "Rahul Surasinghe";
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "camera" ];
     shell = pkgs.fish;
     # packages = with pkgs; [
-    #   firefox
-    #   git
-    #   thunderbird
+    #  firefox
+    #  thunderbird
     # ];
   };
+  programs.fish.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -208,14 +173,14 @@
     git
     xdg-utils
     pkgs-unstable.wayland
-    pkgs-unstable.qt6.qtwayland          # QT6 Framework
-    pkgs-unstable.wayland-utils          # Display Info about Protocols
-    pkgs-unstable.wayland-scanner        # Wayland Protocol
-    pkgs-unstable.wayland-protocols      # Wayland Protocol Extensions
-    pkgs-unstable.glfw-wayland           # Managing Input
-    pkgs-unstable.wev                    # Wayland Event Viewer
-    pkgs-unstable.wl-clipboard           # Copy/Paste Utilities
-    pkgs-unstable.wlr-randr              # Output/Display Configuration Tool
+    pkgs-unstable.qt6.qtwayland         # QT6 Framework
+    pkgs-unstable.wayland-utils         # Display Info about Protocols
+    pkgs-unstable.wayland-scanner       # Wayland Protocol
+    pkgs-unstable.wayland-protocols     # Wayland Protocol Extensions
+    pkgs-unstable.glfw-wayland          # Managing Input
+    pkgs-unstable.wev                   # Wayland Event Viewer
+    pkgs-unstable.wl-clipboard          # Copy/Paste Utilities
+    pkgs-unstable.wlr-randr             # Output/Display Configuration Tool
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -237,18 +202,12 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-

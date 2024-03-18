@@ -2,10 +2,10 @@
   description = "Rahul's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -54,7 +54,7 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/framework/12th-gen-intel/hardware-configuration.nix
-          nixos-hardware.nixosModules.framework-12th-gen-intel
+          inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -80,3 +80,4 @@
     };
   };
 }
+ 
