@@ -116,7 +116,7 @@ local plugins = {
     -- Fuzzy Finder
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.1',
+        branch = '0.1.x',
         config = function() require('plugin/telescope') end,
         dependencies = {
             'nvim-lua/plenary.nvim',
