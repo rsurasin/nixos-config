@@ -183,6 +183,7 @@
     pkgs-unstable.wev                   # Wayland Event Viewer
     pkgs-unstable.wl-clipboard          # Copy/Paste Utilities
     pkgs-unstable.wlr-randr             # Output/Display Configuration Tool
+    pkgs-unstable.xdg-desktop-portal-hyprland    # Screen Sharing
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
