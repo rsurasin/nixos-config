@@ -21,7 +21,7 @@
         # Gruvbox
         # color = "282828 ebdbb2";
         # Catppuccin
-        color = "1A1826 D9E0EE";
+        # color = "1A1826 D9E0EE";
       };
 
       mouse = {
