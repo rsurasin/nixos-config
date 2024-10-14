@@ -1,7 +1,7 @@
 local servers = {
     "rust_analyzer",
     "pyright",
-    "tsserver",
+    "ts_ls",
     "eslint",
     "lua_ls",
     "cssls",
