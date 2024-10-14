@@ -48,7 +48,6 @@ cmp.setup({
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
         luasnip = '[Snp]',
-        copilot = '[Copilot]',
         buffer = '[Buf]',
         nvim_lua = '[Lua]',
         path = '[Pth]',
@@ -71,6 +70,7 @@ cmp.setup({
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
     }),
+    -- NOTE: No longer using Coplilot via cmp but keeping below for reference
     -- GH Copilot trying to backseat program and can't tab
     --['<Tab>'] = function(fallback)
     --  if cmp.visible() then
@@ -99,7 +99,6 @@ cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'copilot' },
     { name = 'buffer', keyword_length = 5 },
     { name = 'path' },
     { name = 'nvim_lua' }, -- Only active in lua files
