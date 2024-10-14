@@ -58,9 +58,6 @@ Hydra({
         color = 'pink',
         buffer = bufnr,
         invoke_on_body = true,
-        --hint = {
-        --    border = 'rounded'
-        --},
     },
     mode = {'n','x'},
     body = '<C-W>',
@@ -117,9 +114,6 @@ Hydra({
         buffer = bufnr,
         color = 'pink',
         invoke_on_body = true,
-        hint = {
-            border = 'rounded'
-        },
         on_enter = function()
             vim.cmd 'mkview'
             vim.cmd 'silent! %foldopen!'

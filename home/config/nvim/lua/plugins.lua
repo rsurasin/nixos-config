@@ -107,7 +107,7 @@ local plugins = {
         dependencies = 'kyazdani42/nvim-web-devicons',
     },
     -- Hydra: Submaps for Keymaps
-    'anuvyklack/hydra.nvim',
+    'nvimtools/hydra.nvim',
     -- Rooter: magically cd into project directory
     {
         'ahmedkhalf/project.nvim',
@@ -168,15 +168,9 @@ local plugins = {
         event = 'InsertEnter',
         config = function ()
             require('copilot').setup({
-                --suggestion = { enabled = false },
-                --panel = { enabled = false },
+                panel = { enabled = false },
+                suggestion = { auto_trigger = false },
             })
-        end,
-    },
-    {
-        'zbirenbaum/copilot-cmp',
-        config = function ()
-            require('copilot_cmp').setup()
         end,
     },
     -- Syntax Parser
