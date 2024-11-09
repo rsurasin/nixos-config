@@ -2,8 +2,10 @@
 -- Set leader key early in config
 vim.g.mapleader = " "
 
--- Packer Plugins
-require('impatient')
+-- Disable Built-in Plugins
+require('disable_builtin')
+
+-- Lazy Plugins
 require('plugins')
 
 -- Helper Script

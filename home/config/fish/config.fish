@@ -11,9 +11,6 @@ set -gx EDITOR $VISUAL
 # Remove Greeting 
 set -U fish_greeting
 
-# THEMES: Dracula, gruvbox-dark
-# bat
-set -x BAT_THEME "gruvbox-dark"
 # manpage
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
@@ -42,14 +39,14 @@ function cdf
 end
 
 # abbreviations
-abbr -a cl "clear"
+abbr -a cl "clear -x"
 abbr -a nv "nvim"
-abbr -a l "exa"
-abbr -a ll "exa -l"
-abbr -a lll "exa -la"
+abbr -a l "eza"
+abbr -a ll "eza -l"
+abbr -a lll "eza -la"
 abbr -a g "git"
 abbr -a ga "git add -p"
 abbr -a gc "git checkout"
 abbr -a gs "git status"
-abbr -a gcm "git commit -m "
+abbr -a gcm "git commit -m"
 

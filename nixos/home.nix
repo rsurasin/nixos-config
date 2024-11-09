@@ -7,6 +7,15 @@
 
     stateVersion = "22.05"; # Don't touch
 
+    # Consistent Cursor
+    pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+      size = 32;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
     packages = with pkgs; [
       # Dev Tools
       fish                # Shell
@@ -18,7 +27,7 @@
       bat                 # cat replacement
       ripgrep             # grep replacement
       fd                  # find replacement
-      exa                 # ls replacement
+      eza                 # ls replacement
       tealdeer            # Simplified man pages
       tree                # Show file structure
       urlview             # Extract urls from text
@@ -27,6 +36,10 @@
       gcc                 # GNU Compiler Collection
       gnumake             # Controls the generations of executables
       cmake               # Cross-platform open-source build system generator
+      git-crypt           # Encryption for git
+
+      pkgs-unstable.tree-sitter    # Parser Generator Tool
+      pkgs-unstable.nodejs         # JS runtime environment
 
       # Utilities
       brightnessctl       # Control device brightness
@@ -49,13 +62,13 @@
       # Language Servers
       rust-analyzer
       nodePackages.pyright
+      pkgs-unstable.lua-language-server
       nodePackages.typescript-language-server
-      sumneko-lua-language-server
-      nodePackages.vscode-langservers-extracted        # html, css, & json
+      nodePackages.vscode-langservers-extracted        # eslint, html, css, & json
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.yaml-language-server
       gopls
-      rnix-lsp
+      nil # lsp for nix
       # TODO: Package graphql-language-service-cli
 
       # Fonts
@@ -68,10 +81,11 @@
       discord             # Messenging App
       spotify             # Music
       signal-desktop      # Messenging App
-      obsidian            # Notes
       flameshot           # Screenshot
       mpv                 # Video Player
       imv                 # Image Viewer
+      sioyek              # PDF Viewer
+      pkgs-unstable.obsidian            # Notes
     ];
   };
 
@@ -102,10 +116,10 @@
         # BUG: https://github.com/tomyun/base16-fish/issues/7
         name = "base16-fish";
         src = pkgs.fetchFromGitHub {
-          owner = "twiggley";
+          owner = "rsurasin";
           repo = "base16-fish";
-          rev = "3d5855be510e94156b4c9bde218d0d5a2bd81b7b";
-          sha256 = "kAq9LAsgjIBwEp3f1BMpEXohhXg8/EDAfH0RICIbgsA=";
+          rev = "880e650b94c8459c9aa5559ec715e5540a7fa661";
+          sha256 = "NUYm4qPyC4L/poE+hwyxfC5MnNhfEx1RBmRhb2XnVKc=";
         };
       }
     ];
@@ -119,32 +133,6 @@
     # Tmux
     tmux.enable = true;
     tmux.extraConfig = builtins.readFile ../home/tmux.conf;
-
-    # Foot
-    foot.package = pkgs-unstable.foot;
-    foot.enable = true;
-    foot.server.enable = true;
-    foot.settings = {
-      main = {
-        term = "xterm-256color";
-        font = "JetBrainsMono Nerd Font:size=9.5";
-        dpi-aware = "auto";
-      };
-
-      scrollback = {
-        lines = "100000";
-      };
-
-      cursor = {
-        # Gruvbox
-        # Note: Themes - https://codeberg.org/dnkl/foot/src/branch/master/themes
-        color = "282828 ebdbb2";
-      };
-
-      mouse = {
-        hide-when-typing = "yes";
-      };
-    };
 
   };
 

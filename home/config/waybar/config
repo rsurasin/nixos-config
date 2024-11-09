@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces", "cpu", "memory", "network", "hyprland/submap"],
+    "modules-left": ["hyprland/workspaces", "cpu", "memory", "network", "hyprland/submap"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "backlight", "battery", "clock"],
     // Modules configuration
@@ -122,7 +122,7 @@
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "0% ",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {

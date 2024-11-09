@@ -3,17 +3,6 @@ local opt = vim.opt
 local home = os.getenv("HOME")
 local nvim_path = home .. "/.config/nvim"
 
--- Disable Built-in Plugins
-vim.g.loaded_gzip         = 1
-vim.g.loaded_tar          = 1
-vim.g.loaded_tarPlugin    = 1
-vim.g.loaded_zip          = 1
-vim.g.loaded_zipPlugin    = 1
-vim.g.loaded_netrw        = 1
-vim.g.loaded_netrwPlugin  = 1
-vim.g.loaded_matchit      = 1
-vim.g.loaded_matchparen   = 1
-
 -- Basic Essentials
 opt.syntax = "on" -- nvim default
 opt.hidden = true -- nvim default
@@ -34,7 +23,7 @@ opt.smartcase = true --... unless there is a capital letter in the query
 opt.gdefault = true -- global flag set as default for search and replace
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- Show matching brackets when cursor is over them
-opt.hlsearch = true -- Search highlighting; keymapping to turn it off
+opt.hlsearch = false -- Search highlighting; keymapping to turn it off
 
 -- Sane Splits
 opt.splitright = true
@@ -62,16 +51,10 @@ opt.relativenumber = true -- Show relative line no.
 opt.numberwidth = 1 -- Width of the Col in terms of # of chars
 
 -- Colors
-vim.opt.colorcolumn = "80" -- Bar to prevent going 80 char in a line
-vim.cmd[[highlight clear ColorColumn]]
--- Color of the numbers that aren't highligheted (i.e. color of line no. where cursor isn't on)
-vim.cmd[[highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=LightGrey guibg=NONE]]
--- Remove underline under line numbers
-vim.cmd[[highlight CursorLineNr term=bold cterm=bold ctermfg=012 gui=bold]]
--- Configure Cursor Line
+-- NOTE: Group colors (e.g., SignColumn, ColorColumn, CursorLine, CursorLineNr, LineNr, etc.)
+-- can be set in their respective colorscheme
+opt.colorcolumn = "80" -- Bar to prevent going 80 char in a line
 opt.cursorline = true
--- Highlight the current line
-vim.cmd[[highlight CursorLine cterm=None ctermbg=238]]
 
 -- Configure Cursor
 -- https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim/6489348#6489348

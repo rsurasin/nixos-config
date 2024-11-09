@@ -1,195 +1,201 @@
 -- Bootstrap
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function(use)
-  -- Plugins
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  -- Optimize
-  -- TODO: this plugin will be redundant once https://github.com/neovim/neovim/pull/15436 is merged
-  use 'lewis6991/impatient.nvim'
-  use { 'dstein64/vim-startuptime', cmd = 'StartupTime' }
+-- Plugins
+local plugins = {
+    -- Optimize
+    { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 
-  -- GUI Enhancements
-  -- Web Icons
-  use {
-    'kyazdani42/nvim-web-devicons',
-    config = [[require('plugin/nvim-web-devicons')]],
-  }
-  -- Colorschemes
-  -- Gruvbox Theme w/ Plugin Support
-  use {
-    "ellisonleao/gruvbox.nvim",
-    config = [[require('colors/gruvbox')]],
-  }
-  -- Dracula Theme w/ Plugin Support
-  use {
-    'Mofiqul/dracula.nvim',
-    -- config = [[require('colors/dracula')]],
-  }
-  -- Tokyonight Theme w/ Plugin Support
-  use {
-    'folke/tokyonight.nvim',
-    -- NOTE: Uncomment when you want to use
-    -- config = [[require('colors/tokyonight.lua')]]
-  }
-  -- Onedark Theme w/ Plugin Support
-  use {
-    'navarasu/onedark.nvim',
-    -- NOTE: Uncomment when you want to use
-    -- config = [[require('colors/onedark')]]
-  }
-  -- Rose-Pine Theme w/ Pluggin Support
-  use {
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    tag = 'v1.*',
-    -- NOTE: Uncomment when you want to use
-    -- config = [[require('colors/rose-pine')]]
-  }
-  -- Catppuccin Theme w/ Plugin Support
-  use {
-    'catppuccin/nvim',
-    as = 'catppuccin',
-    -- config = [[require('colors/catppuccin')]],
-  }
-  -- Kanagawa Theme w/ Plugin Support
-  use {
-    'rebelot/kanagawa.nvim',
-    -- config = [[require('colors/kanagawa')]],
-  }
-  -- Doom One Theme w/ Plugin Support
-  use({
-    'NTBBloodbath/doom-one.nvim',
-    -- config = [[require('colors/DOOM')]],
-  })
-  -- Bufferline
-  use {
-    'akinsho/bufferline.nvim',
-    tag = 'v2.*',
-    config = [[require('plugin/nvim-bufferline')]],
-    requires = 'kyazdani42/nvim-web-devicons'
-  }
-  -- Indent Blanklines
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = [[require('plugin/indent-blankline')]],
-  }
-  -- Status Line
-  use {
-    'nvim-lualine/lualine.nvim',
-    config = [[require('plugin/lualine')]],
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
-
-  -- Navigation
-  -- TODO: Look into lightspeed.nvim
-  -- tmux and vim splits navigation
-  use {
-    'numToStr/Navigator.nvim',
-    config = [[require('plugin/navigator')]]
-  }
-
-  -- Utility
-  -- TODO: Look into editorconfig plugin
-  -- File Explorer
-  use {
-    'kyazdani42/nvim-tree.lua',
-    config = [[require('plugin/nvim-tree')]],
-    requires = 'kyazdani42/nvim-web-devicons',
-    cmd = 'NvimTreeToggle',
-  }
-  -- Fuzzy Finder
-  use {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    config = function() require('plugin/telescope') end,
-    requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' } },
-    cmd = 'Telescope',
-    module = 'telescope',
-  }
-  -- Telescope Extensions
-  -- fzf
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-  -- cder - change directory within telescope
-  use {'zane-/cder.nvim'}
-  -- Telescope-file-browser
-  -- TODO: When this plugin incorporates depth, come back
-  -- use { "nvim-telescope/telescope-file-browser.nvim" }
-  -- Git
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = [[require('plugin/gitsigns')]],
-    requires = {
-      'nvim-lua/plenary.nvim'
+    -- GUI Enhancements
+    -- Web Icons
+    {
+        'kyazdani42/nvim-web-devicons',
+        config = function() require('plugin/nvim-web-devicons') end,
     },
-    tag = 'release' -- To use the latest release
-  }
-  -- HACK: Need to lazy load to prevent plenary async error (SIGABRT) https://github.com/TimUntersberger/neogit/issues/206#
-  use {
-    'TimUntersberger/neogit',
-    cmd = 'Neogit',
-    config = [[require('plugin/neogit')]],
-    requires = 'nvim-lua/plenary.nvim'
-  }
-  -- Rooter: magically cd into project directory
-  use {
-    'ahmedkhalf/project.nvim',
-    config = [[require('plugin/project')]]
-  }
-  -- Intellisense
-  use {
+    -- Colorschemes
+    -- Gruvbox Theme w/ Plugin Support
+    {
+        "ellisonleao/gruvbox.nvim",
+        --priority = 1000,
+        --config = function() require('colors/gruvbox') end,
+    },
+    -- Dracula Theme w/ Plugin Support
+    {
+        'Mofiqul/dracula.nvim',
+        priority = 1000,
+        -- NOTE: Uncomment when you want to use
+        -- config = function() require('colors/dracula') end,
+        lazy = true,
+    },
+    -- Tokyonight Theme w/ Plugin Support
+    {
+        'folke/tokyonight.nvim',
+        priority = 1000,
+        -- NOTE: Uncomment when you want to use
+        -- config = function() require('colors/tokyonight.lua') end,
+        lazy = true,
+    },
+    -- Catppuccin Theme w/ Plugin Support
+    {
+        'catppuccin/nvim',
+        priority = 1000,
+        name = 'catppuccin',
+        -- NOTE: Uncomment when you want to use
+        config = function() require('colors/catppuccin') end,
+    },
+    -- Doom One Theme w/ Plugin Support
+    {
+        'NTBBloodbath/doom-one.nvim',
+        priority = 1000,
+        -- NOTE: Uncomment when you want to use
+        -- config = function() require('colors/DOOM') end,
+        lazy = true,
+    },
+    -- Bufferline
+    {
+        'akinsho/bufferline.nvim',
+        version = '*',
+        config = function() require('plugin/nvim-bufferline') end,
+        dependencies = 'kyazdani42/nvim-web-devicons',
+    },
+    -- Indent Blanklines
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function() require('plugin/indent-blankline') end,
+    },
+    -- Status Line
+    {
+        'nvim-lualine/lualine.nvim',
+        config = function() require('plugin/lualine') end,
+        dependencies = {'kyazdani42/nvim-web-devicons', lazy = true},
+    },
+
+    -- Navigation
+    -- TODO: Look into leap.nvim
+    -- tmux and vim splits navigation
+    {
+        'numToStr/Navigator.nvim',
+        config = function() require('plugin/navigator') end,
+    },
+
+    -- Utility
+    -- TODO: Look into editorconfig plugin
+    -- Git
+    'tpope/vim-fugitive',
+    -- File Explorer
+    {
+        'stevearc/oil.nvim',
+        opts = {
+            skip_confirm_for_simple_edits = true,
+            keymaps = {
+                ['q'] = 'actions.close',
+                ['<C-x>'] = 'actions.select_split',
+                ['<C-h>'] = false,
+            },
+        },
+        dependencies = 'kyazdani42/nvim-web-devicons',
+    },
+    -- Hydra: Submaps for Keymaps
+    'nvimtools/hydra.nvim',
+    -- Rooter: magically cd into project directory
+    {
+        'ahmedkhalf/project.nvim',
+        config = function () require('plugin/project') end,
+    },
+    -- Fuzzy Finder
+    {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        config = function() require('plugin/telescope') end,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-lua/popup.nvim',
+            'debugloop/telescope-undo.nvim', -- Undo Tree
+        },
+        cmd = 'Telescope',
+    },
+    -- Telescope Extensions
+    -- fzf
+    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
+    -- cder - change directory within telescope
+    'zane-/cder.nvim',
+
+    -- Git
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function() require('gitsigns').setup() end,
+        dependencies = 'nvim-lua/plenary.nvim',
+    },
+
+    -- Intellisense
+    -- LSP
     'neovim/nvim-lspconfig',
-  }
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'L3MON4D3/LuaSnip',
-      'windwp/nvim-autopairs',
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'lukas-reineke/cmp-rg', after = 'nvim-cmp' },
-      'hrsh7th/cmp-nvim-lsp',
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-    },
-    config = [[require('plugin/nvim-cmp')]]
-  }
-  -- use {
-  --   'williamboman/nvim-lsp-installer',
-  --   config = [[require('lsp/nvim-lsp-installer')]]
-  -- }
-  -- Syntax Parser
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    requires = {
-        'nvim-treesitter/nvim-treesitter-refactor',
-        'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
-    run = function()
-        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-        ts_update()
-    end,
-    config = [[require('plugin/treesitter')]]
-  }
-  -- Flutter
-  use {
-    'akinsho/flutter-tools.nvim',
-    config = [[require('plugin/flutter-tools')]],
-    requires = 'nvim-lua/plenary.nvim',
-    ft = "dart",
-  }
+    -- Completion Engine
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            -- Autocompletion
+            'saadparwaiz1/cmp_luasnip',
+            'lukas-reineke/cmp-rg',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lua',
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+            -- Snippets
+            'L3MON4D3/LuaSnip',
+            'windwp/nvim-autopairs',
+            'rafamadriz/friendly-snippets',
+        },
+        config = function() require('plugin/nvim-cmp') end,
+    },
+    -- GitHub Copilot
+    {
+        'zbirenbaum/copilot.lua',
+        cmd = 'Copilot',
+        event = 'InsertEnter',
+        config = function ()
+            require('copilot').setup({
+                panel = { enabled = false },
+                suggestion = { auto_trigger = false },
+            })
+        end,
+    },
+    -- Syntax Parser
+    {
+        'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-refactor',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter/nvim-treesitter-context',
+        },
+        -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
+        build = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+        config = function() require('plugin/treesitter') end,
+    },
+    -- Flutter
+    {
+        'akinsho/flutter-tools.nvim',
+        config = function() require('plugin/flutter-tools') end,
+        dependencies = 'nvim-lua/plenary.nvim',
+        ft = "dart",
+    },
+}
+
+require("lazy").setup(plugins)
 

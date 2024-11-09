@@ -2,10 +2,10 @@
   description = "Rahul's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -13,15 +13,24 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, hyprland, ... }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, hyprland, neovim-nightly, ... }@inputs:
   let
     user = "rahul";
     system = "x86_64-linux";  # Which OS to use
     pkgs = import nixpkgs {
       inherit system;
       config = { allowUnfree = true; };
+      #overlays = [
+      #  (final: prev: {
+      #    neovim = inputs.neovim-nightly.packages.${system}.default;
+      #  })
+      #];
     };
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
@@ -44,29 +53,24 @@
         inherit system;
         specialArgs = { # Pass flake vars to external config files
           inherit user;
+          inherit pkgs;
           inherit pkgs-unstable;
         };
         modules = [
           ./nixos/configuration.nix
           ./hosts/framework/12th-gen-intel/hardware-configuration.nix
-          nixos-hardware.nixosModules.framework-12th-gen-intel
+          inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { # Pass flake vars
               inherit user;
+              inherit pkgs;
               inherit pkgs-unstable;
             };
             home-manager.users.${user} = {
-              imports = [ ./nixos/home.nix ];
-            };
-          }
-
-          hyprland.nixosModules.default {
-            programs.hyprland = {
-              enable = true;
-              xwayland.hidpi = true;
+              imports = [ ./nixos ];
             };
           }
         ];
@@ -74,3 +78,4 @@
     };
   };
 }
+ 

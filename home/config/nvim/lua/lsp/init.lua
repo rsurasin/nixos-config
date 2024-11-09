@@ -1,24 +1,22 @@
 local servers = {
     "rust_analyzer",
     "pyright",
-    "tsserver",
-    "sumneko_lua",
+    "ts_ls",
+    "eslint",
+    "lua_ls",
     "cssls",
     "html",
     "dockerls",
     "yamlls",
     "gopls",
     "jsonls",
-    "rnix",
+    "nil_ls",
     "graphql",
 }
 
 -- override default LSP server options
 -- lua language server (sumneko-lua)
 local server_opts = {
-    ["sumneko_lua"] = function()
-        require'lsp.lua-ls'
-    end,
     ["html"] = function()
         require'lsp.html-ls'
     end,
