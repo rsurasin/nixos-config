@@ -14,3 +14,12 @@
 - Foot as new terminal (replace Kitty)
 - Fuzzel as app launcher
 - Other utilities such as cliphist, grim, etc.
+
+### v2.1 - NixOS 23.11
+- Upgrade to NixOS v23.11
+- Upgrade all packages (Home Manager, Firefox, Neovim, etc.)
+- Upgrade all Neovim plugins
+- Not using Neovim nightly due to bugs with Hydra Plugin
+- Add Copilot plugin for Neovim
+- Enable screensharing w/ Wayland (doesn't work w/ Firefox)
+- Enable `NIXOS_OZONE_WL` to prevent electron apps from being blurry
