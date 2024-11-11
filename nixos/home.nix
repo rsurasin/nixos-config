@@ -30,7 +30,6 @@
       eza                 # ls replacement
       tealdeer            # Simplified man pages
       tree                # Show file structure
-      urlview             # Extract urls from text
       fpp                 # Presents files for selection
       ranger              # File manager
       gcc                 # GNU Compiler Collection
