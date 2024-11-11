@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, user, ... }:
+{ config, inputs, pkgs, pkgs-unstable, user, ... }:
 
 {
   imports =
@@ -86,15 +86,21 @@
     enable = true;
     wayland = true;
   };
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # Set the flake package
+    package = pkgs.hyprland;
+    # Set the portal package to make sure they are in sync - Screen Sharing
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+  };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  services.xserver.displayManager.defaultSession = "hyprland";
+  services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
-    xkbOptions = "ctrl:nocaps"; # map caps to ctrl
+    variant = "";
+    options = "ctrl:nocaps"; # map caps to ctrl
   };
 
   # Intel GPU Settings
@@ -102,6 +108,7 @@
   boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
   hardware.opengl = {
     enable = true;
+    #extraPackages = with inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     extraPackages = with pkgs; [
       intel-media-driver
       vaapiVdpau
@@ -136,8 +143,8 @@
   hardware.bluetooth.hsphfpd.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-  services.xserver.libinput.touchpad.naturalScrolling = true;
+  services.libinput.enable = true;
+  services.libinput.touchpad.naturalScrolling = true;
 
   # Power Management - Framework Laptop
   services.tlp.enable = true;
@@ -183,7 +190,6 @@
     pkgs-unstable.wev                   # Wayland Event Viewer
     pkgs-unstable.wl-clipboard          # Copy/Paste Utilities
     pkgs-unstable.wlr-randr             # Output/Display Configuration Tool
-    pkgs-unstable.xdg-desktop-portal-hyprland    # Screen Sharing
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
