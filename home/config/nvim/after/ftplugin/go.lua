@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.go",
   callback = function()
     if vim.fn.executable("go") == 1 then
-      vim.fn.jobstart({ "go fmt", vim.api.nvim_buf_get_name(0) })
+      vim.fn.jobstart({ "go", "fmt", vim.api.nvim_buf_get_name(0) })
     end
   end,
 })
