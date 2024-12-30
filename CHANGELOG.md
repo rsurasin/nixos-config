@@ -23,3 +23,13 @@
 - Add Copilot plugin for Neovim
 - Enable screensharing w/ Wayland (doesn't work w/ Firefox)
 - Enable `NIXOS_OZONE_WL` to prevent electron apps from being blurry
+
+### v2.2 - NixOS 24.05
+- Upgrade to NixOS v24.05
+- Add new abbreviations to fish shell
+- hyprland:
+    - Enable options for screen sharing
+    - BUG: hyprland - can't go fullscreen on YouTube w/ Firefox (check git commit)
+- tmux: `urlview` is not supported anymore
+- Neovim: add autocmds for formatting filetypes
+- Allow listening on TCP ports for development purposes
