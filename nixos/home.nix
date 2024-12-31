@@ -10,7 +10,7 @@
     # Consistent Cursor
     pointerCursor = {
       name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       size = 32;
       gtk.enable = true;
       x11.enable = true;
@@ -60,12 +60,12 @@
 
       # Language Servers
       rust-analyzer
-      nodePackages.pyright
-      pkgs-unstable.lua-language-server
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted        # eslint, html, css, & json
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.yaml-language-server
+      pyright
+      lua-language-server
+      typescript-language-server
+      vscode-langservers-extracted        # eslint, html, css, & json
+      dockerfile-language-server-nodejs
+      yaml-language-server
       gopls
       nil # lsp for nix
       # TODO: Package graphql-language-service-cli
@@ -84,6 +84,7 @@
       mpv                 # Video Player
       imv                 # Image Viewer
       sioyek              # PDF Viewer
+      pavucontrol         # Volume Control GUI
       pkgs-unstable.obsidian            # Notes
     ];
   };

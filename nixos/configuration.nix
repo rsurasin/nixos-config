@@ -12,7 +12,7 @@
 
   # Enable Flakes
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
@@ -83,7 +83,6 @@
 
   # Enable Wayland and Hyprland
   services.xserver.displayManager.gdm = {
-    enable = true;
     wayland = true;
   };
   programs.hyprland = {
@@ -106,7 +105,7 @@
   # Intel GPU Settings
   services.xserver.videoDrivers = [ "modesetting" ];
   boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     #extraPackages = with inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     extraPackages = with pkgs; [
@@ -120,8 +119,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -129,7 +126,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    #jack.enable = true; # For professional audio software
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
