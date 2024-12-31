@@ -75,7 +75,6 @@
       roboto
 
       # Applications
-      firefox             # Browser
       bitwarden           # Password Manager
       discord             # Messenging App
       spotify             # Music
