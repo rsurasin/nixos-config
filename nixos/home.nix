@@ -20,7 +20,6 @@
       # Dev Tools
       fish                # Shell
       starship            # Shell Prompt
-      kitty               # Terminal
       neovim              # Editor
       tmux                # Terminal Multiplexer
       fzf                 # Fuzzy Finder
@@ -127,9 +126,6 @@
     # Starship Prompt
     starship.enable = true;
 
-    # Kitty
-    kitty.enable = true;
-
     # Tmux
     tmux.enable = true;
     tmux.extraConfig = builtins.readFile ../home/tmux.conf;
@@ -142,9 +138,6 @@
   # Starship config
   home.file.".config/starship.toml".source = ../home/config/starship.toml;
 
-  # Kitty config
-  home.file.".config/kitty".source = ../home/config/kitty;
-  home.file.".config/kitty".recursive = true;
 
   # Tmux config
   home.file.".tmux.conf".source = ../home/tmux.conf;
@@ -152,10 +145,6 @@
   # Neovim config
   home.file.".config/nvim".source = ../home/config/nvim;
   home.file.".config/nvim".recursive = true;
-
-  # i3 config
-  home.file.".config/i3".source = ../home/config/i3;
-  home.file.".config/i3".recursive = true;
 
   # Hyprland config
   home.file.".config/hypr".source = ../home/config/hypr;
