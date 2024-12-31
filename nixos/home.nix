@@ -20,6 +20,7 @@
       # Dev Tools
       fish                # Shell
       starship            # Shell Prompt
+      pkgs-unstable.ghostty               # Terminal
       neovim              # Editor
       tmux                # Terminal Multiplexer
       fzf                 # Fuzzy Finder
@@ -138,6 +139,9 @@
   # Starship config
   home.file.".config/starship.toml".source = ../home/config/starship.toml;
 
+  # Ghostty config
+  home.file.".config/ghostty".source = ../home/config/ghostty;
+  home.file.".config/ghostty".recursive = true;
 
   # Tmux config
   home.file.".tmux.conf".source = ../home/tmux.conf;

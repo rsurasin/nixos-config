@@ -1,0 +1,22 @@
+# Font
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# Theme
+theme = catppuccin-mocha
+
+# Cursor
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-invert-fg-bg = true
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# Scrollback history (bytes)
+scrollback-limit = 100000
+
+# Focus
+focus-follows-mouse = true
+
+# Clipboard
+clipboard-paste-protection = true
