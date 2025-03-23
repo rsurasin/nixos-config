@@ -1,6 +1,10 @@
 # Font
 font-family = JetBrainsMono Nerd Font
-font-size = 14
+font-size = 10
+# Disable Ligatures
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
 
 # Theme
 theme = catppuccin-mocha
