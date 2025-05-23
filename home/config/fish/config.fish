@@ -8,7 +8,7 @@ set -gx LANG en_US.UTF-8
 set -gx VISUAL nvim
 set -gx EDITOR $VISUAL
 
-# Remove Greeting 
+# Remove Greeting
 set -U fish_greeting
 
 # manpage
@@ -47,11 +47,16 @@ abbr -a lll "eza -la"
 abbr -a g "git"
 abbr -a ga "git add -p"
 abbr -a ga. "git add ."
+abbr -a gbl "git blame"
 abbr -a gc "git checkout"
 abbr -a gcm "git commit -m"
 abbr -a gca "git commit --amend"
+abbr -a gl "git log"
+abbr -a glol "git log --oneline --graph --all"
 abbr -a gs "git status"
-abbr -a gsw "git switch -c"
+abbr -a gss "git status -s"
+abbr -a gst "git stash"
+abbr -a gsw "git switch"
 abbr -a gta "git tag -a v# -m"
 abbr -a gtd "git tag -d"
 abbr -a tl "tmux ls"
