@@ -13,6 +13,7 @@ my neovim keybindings and what they do.
 `sudo nixos-rebuild switch --flake .#<hostname>`
 
 - Used to install things
+- *IMPORTANT:* Remove home-manager `.backup` files in `~/.config` and `~/.mozilla`
 
 ### Upgrade System
 `sudo nix flake update`
