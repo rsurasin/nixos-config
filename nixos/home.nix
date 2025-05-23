@@ -146,6 +146,9 @@
   # Tmux config
   home.file.".tmux.conf".source = ../home/tmux.conf;
 
+  # Gitconfig
+  home.file.".gitconfig".source = ../home/gitconfig;
+
   # Neovim config
   home.file.".config/nvim".source = ../home/config/nvim;
   home.file.".config/nvim".recursive = true;
