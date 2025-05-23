@@ -43,6 +43,7 @@
       # Utilities
       brightnessctl       # Control device brightness
       playerctl           # Control media player
+      btop                # System Monitoring
 
       # Wayland
       pkgs-unstable.foot                  # Terminal
