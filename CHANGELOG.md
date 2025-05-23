@@ -33,3 +33,16 @@
 - tmux: `urlview` is not supported anymore
 - Neovim: add autocmds for formatting filetypes
 - Allow listening on TCP ports for development purposes
+
+### v2.3 - NixOS 24.11
+- Upgrade to NixOS v24.11
+    - Update packages
+- Add more abbreviations to fish shell (primarily for git)
+- Add global git config
+- Backup files with home-manager
+- Ghostty is the new terminal now
+    - Depracated/Removed Kitty
+- Update Hyprland
+    - Depracated/Removed i3
+- Enable override_generic_sorter for telescope-fzf-native
+- Update Neovim plugins
