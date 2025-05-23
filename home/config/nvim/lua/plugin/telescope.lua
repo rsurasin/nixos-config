@@ -3,20 +3,20 @@ require('telescope').setup {
   defaults = {
     layout_strategy = "vertical",
     layout_config = {
-        preview_cutoff = 10,
-        prompt_position = "top",
+      preview_cutoff = 10,
+      prompt_position = "top",
     },
-    prompt_prefix =  "❯ ",
-    selection_caret =  "❯ ",
+    prompt_prefix = "❯ ",
+    selection_caret = "❯ ",
     sorting_strategy = "ascending",
   },
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = false, -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     },
     cder = {
       dir_command = {
@@ -32,8 +32,8 @@ require('telescope').setup {
         os.getenv('HOME')
       },
       previewer_command =
-        'exa -a --color=always -T --level=3 --icons --git-ignore --long '..
-        '--no-permissions --no-user --no-filesize --git --ignore-glob=.git',
+          'exa -a --color=always -T --level=3 --icons --git-ignore --long ' ..
+          '--no-permissions --no-user --no-filesize --git --ignore-glob=.git',
       command_executor = { 'fish', '-c' },
       pager_command = 'bat --plain --paging=always --pager="less -RS"',
     }
