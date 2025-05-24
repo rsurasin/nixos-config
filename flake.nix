@@ -53,7 +53,6 @@
         inherit system;
         specialArgs = { # Pass flake vars to external config files
           inherit user;
-          inherit pkgs;
           inherit pkgs-unstable;
           inherit inputs;
         };
@@ -68,7 +67,6 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { # Pass flake vars
               inherit user;
-              inherit pkgs;
               inherit pkgs-unstable;
               inherit inputs;
             };
