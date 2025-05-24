@@ -7,7 +7,7 @@
     profiles = {
       default = {
         search = {
-          default = "DuckDuckGo";
+          default = "ddg";
           engines = {
             "Nix Packages" = {
               urls = [{
@@ -41,7 +41,7 @@
               }];
               definedAliases = [ "@awiki" ];
             };
-            "Wikipedia (en)".metadata.alias = "@wiki";
+            "wikipedia".metadata.alias = "@wiki";
           };
         };
         userChrome = ''
