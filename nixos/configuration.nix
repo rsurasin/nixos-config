@@ -30,7 +30,8 @@
     packages = with pkgs; [
       jetbrains-mono
       roboto
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ]; })
+      nerd-fonts.symbols-only
+      nerd-fonts.jetbrains-mono
     ];
   };
 
