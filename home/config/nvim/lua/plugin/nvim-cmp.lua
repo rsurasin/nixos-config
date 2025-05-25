@@ -4,36 +4,36 @@ local luasnip = require('luasnip')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local cmp_kinds = {
-    Class = ' ',
-    Color = ' ',
-    Constant = 'ﲀ ',
-    Constructor = ' ',
-    Enum = '練',
-    EnumMember = ' ',
-    Event = ' ',
-    Field = ' ',
-    File = '',
-    Folder = ' ',
-    Function = ' ',
-    Interface = 'ﰮ ',
-    Keyword = ' ',
-    Method = ' ',
-    Module = ' ',
-    Operator = '',
-    Property = ' ',
-    Reference = ' ',
-    Snippet = ' ',
-    Struct = ' ',
-    Text = ' ',
-    TypeParameter = ' ',
-    Unit = '塞',
-    Value = ' ',
-    Variable = ' ',
+  Class = ' ',
+  Color = ' ',
+  Constant = 'ﲀ ',
+  Constructor = ' ',
+  Enum = '練',
+  EnumMember = ' ',
+  Event = ' ',
+  Field = ' ',
+  File = '',
+  Folder = ' ',
+  Function = ' ',
+  Interface = 'ﰮ ',
+  Keyword = ' ',
+  Method = ' ',
+  Module = ' ',
+  Operator = '',
+  Property = ' ',
+  Reference = ' ',
+  Snippet = ' ',
+  Struct = ' ',
+  Text = ' ',
+  TypeParameter = ' ',
+  Unit = '塞',
+  Value = ' ',
+  Variable = ' ',
 }
 
 require('luasnip.loaders.from_vscode').lazy_load()
 vim.api.nvim_command('hi LuasnipChoiceNodePassive cterm=italic')
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 cmp.setup({
   snippet = {
@@ -67,8 +67,8 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<C-y>'] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
     }),
     -- NOTE: No longer using Coplilot via cmp but keeping below for reference
     -- GH Copilot trying to backseat program and can't tab
@@ -99,7 +99,7 @@ cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'buffer', keyword_length = 5 },
+    { name = 'buffer',  keyword_length = 5 },
     { name = 'path' },
     { name = 'nvim_lua' }, -- Only active in lua files
     { name = 'rg' },

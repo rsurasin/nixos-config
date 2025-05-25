@@ -1,1 +1,1 @@
-require("flutter-tools").setup{} -- use defaults
+require("flutter-tools").setup {} -- use defaults

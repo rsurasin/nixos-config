@@ -8,7 +8,7 @@ vim.g.tokyonight_style = "storm"
 -- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
 -- Load the Colorscheme
-vim.cmd[[colorscheme tokyonight]]   
+vim.cmd [[colorscheme tokyonight]]
 
 -- Enables True Color Support
 vim.opt.termguicolors = true

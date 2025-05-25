@@ -6,9 +6,8 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-return require'lspconfig'.html.setup {
+return require 'lspconfig'.html.setup {
   capabilities = capabilities,
-  on_attach = require'lsp/opts'.on_attach,
+  on_attach = require 'lsp/opts'.on_attach,
   flags = lsp_flags,
 }
-
