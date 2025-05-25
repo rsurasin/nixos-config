@@ -36,6 +36,7 @@
       gnumake             # Controls the generations of executables
       cmake               # Cross-platform open-source build system generator
       git-crypt           # Encryption for git
+      zoxide              # Smarter cd
 
       pkgs-unstable.tree-sitter    # Parser Generator Tool
       pkgs-unstable.nodejs         # JS runtime environment
@@ -102,15 +103,6 @@
 
     # Fish plugins
     fish.plugins = [
-      {
-        name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-          sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-        };
-      }
       {
         # base16 themes work w/ tmux
         # BUG: https://github.com/tomyun/base16-fish/issues/7
