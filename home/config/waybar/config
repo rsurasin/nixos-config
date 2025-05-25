@@ -1,6 +1,6 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 34, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
@@ -14,10 +14,9 @@
         "max-length": 8,
         "tooltip": true
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{name}",
         "on-click": "activate",
-        "sort-by-number": true,
         "format-icons": {
             "1": "",
             "2": "",
@@ -27,7 +26,18 @@
             "urgent": "",
             "active": "",
             "default": ""
-        }
+        },
+        "sort-by": "id",
+        "active-only": false,
+        "show-special": false,
+        "special-visible-only": false,
+        "move-to-monitor": true,
+        "disable-scroll": true,
+        "warp-on-scroll": false
+    },
+    "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
