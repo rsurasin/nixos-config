@@ -20,7 +20,6 @@
       # Dev Tools
       fish                # Shell
       starship            # Shell Prompt
-      pkgs-unstable.ghostty               # Terminal
       neovim              # Editor
       tmux                # Terminal Multiplexer
       fzf                 # Fuzzy Finder
@@ -47,7 +46,7 @@
       btop                # System Monitoring
 
       # Wayland
-      pkgs-unstable.foot                  # Terminal
+      pkgs-unstable.ghostty               # Terminal
       pkgs-unstable.fuzzel                # App Launcher
       pkgs-unstable.mako                  # Simple Notification Daemon
       pkgs-unstable.grim                  # Screenshot cli & Screensharing
