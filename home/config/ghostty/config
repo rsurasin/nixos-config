@@ -1,3 +1,6 @@
+# Shell
+shell-integration = fish
+
 # Font
 font-family = JetBrainsMono Nerd Font
 font-size = 10
