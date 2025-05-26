@@ -6,7 +6,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",     -- latest stable release
+    "--branch=stable", -- latest stable release
     lazypath,
   })
 end
@@ -121,7 +121,7 @@ local plugins = {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-lua/popup.nvim',
-      'debugloop/telescope-undo.nvim',       -- Undo Tree
+      'debugloop/telescope-undo.nvim', -- Undo Tree
     },
     cmd = 'Telescope',
   },
