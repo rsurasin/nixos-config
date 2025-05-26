@@ -175,8 +175,6 @@ local plugins = {
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-refactor',
-      'nvim-treesitter/nvim-treesitter-textobjects',
       'nvim-treesitter/nvim-treesitter-context',
     },
     -- Reference: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
