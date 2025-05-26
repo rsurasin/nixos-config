@@ -106,11 +106,6 @@ local plugins = {
     },
     dependencies = 'kyazdani42/nvim-web-devicons',
   },
-  -- Rooter: magically cd into project directory
-  {
-    'ahmedkhalf/project.nvim',
-    config = function() require('plugin/project') end,
-  },
   -- Fuzzy Finder
   {
     'nvim-telescope/telescope.nvim',
