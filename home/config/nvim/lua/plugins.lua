@@ -106,8 +106,12 @@ local plugins = {
     },
     dependencies = 'kyazdani42/nvim-web-devicons',
   },
-  -- Hydra: Submaps for Keymaps
-  'nvimtools/hydra.nvim',
+  -- Which-Key: Mainly for Hydra Functionality (Submaps for Keymaps)
+  {
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+    config = function() require('plugin/which-key') end,
+  },
   -- Rooter: magically cd into project directory
   {
     'ahmedkhalf/project.nvim',
