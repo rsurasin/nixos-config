@@ -184,13 +184,6 @@ local plugins = {
     end,
     config = function() require('plugin/treesitter') end,
   },
-  -- Flutter
-  {
-    'akinsho/flutter-tools.nvim',
-    config = function() require('plugin/flutter-tools') end,
-    dependencies = 'nvim-lua/plenary.nvim',
-    ft = "dart",
-  },
 }
 
 require("lazy").setup(plugins)
