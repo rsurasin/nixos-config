@@ -184,6 +184,14 @@ local plugins = {
     end,
     config = function() require('plugin/treesitter') end,
   },
+  -- Text Objects
+  {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('mini.ai').setup()
+      require('mini.surround').setup()
+    end
+  },
 }
 
 require("lazy").setup(plugins)
