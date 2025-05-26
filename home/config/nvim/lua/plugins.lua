@@ -108,6 +108,13 @@ local plugins = {
   },
   -- Fuzzy Finder
   {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function() require('plugin/fzf-lua') end,
+    opts = {}
+  },
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     config = function() require('plugin/telescope') end,
