@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 local plugins = {
   -- Optimize
-  { 'dstein64/vim-startuptime',                 cmd = 'StartupTime' },
+  { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 
   -- GUI Enhancements
   -- Web Icons
@@ -91,8 +91,6 @@ local plugins = {
 
   -- Utility
   -- TODO: Look into editorconfig plugin
-  -- Git
-  'tpope/vim-fugitive',
   -- File Explorer
   {
     'stevearc/oil.nvim',
@@ -117,6 +115,7 @@ local plugins = {
   },
 
   -- Git
+  'tpope/vim-fugitive',
   {
     'lewis6991/gitsigns.nvim',
     config = function() require('gitsigns').setup() end,
