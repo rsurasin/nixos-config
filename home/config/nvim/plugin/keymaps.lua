@@ -8,10 +8,6 @@ vim.keymap.set("n", "<leader><Tab>", ":b#<CR>", { silent = true, desc = "Switch 
 vim.keymap.set("n", "<leader>d", ":bd<CR>", { silent = true, desc = "Delete buffer" })
 
 -- Lazy Loaded Plugins Keymaps
--- telescope keymap
--- Undotree
-vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { silent = true })
-
 -- Fzf keymap
 -- Search for files
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { silent = true, desc = "Find files" })

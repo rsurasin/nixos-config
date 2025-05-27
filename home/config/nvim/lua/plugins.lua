@@ -114,22 +114,6 @@ local plugins = {
     config = function() require('plugin/fzf-lua') end,
     opts = {}
   },
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    config = function() require('plugin/telescope') end,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-lua/popup.nvim',
-      'debugloop/telescope-undo.nvim', -- Undo Tree
-    },
-    cmd = 'Telescope',
-  },
-  -- Telescope Extensions
-  -- fzf
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  -- cder - change directory within telescope
-  'zane-/cder.nvim',
 
   -- Git
   {
