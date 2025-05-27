@@ -112,7 +112,8 @@ local plugins = {
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require('plugin/fzf-lua') end,
-    opts = {}
+    opts = {},
+    command = 'FzfLua'
   },
 
   -- Git
