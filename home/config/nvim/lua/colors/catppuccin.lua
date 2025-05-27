@@ -31,6 +31,7 @@ require("catppuccin").setup({
   custom_highlights = { CursorLineNr = { fg = mocha.flamingo }, LineNr = { fg = frappe.surface2 }, },
   integrations = {
     cmp = true,
+    fzf = true,
     gitsigns = true,
     telescope = true,
     indent_blankline = {
