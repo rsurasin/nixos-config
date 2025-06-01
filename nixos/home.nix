@@ -30,7 +30,7 @@
       tealdeer            # Simplified man pages
       tree                # Show file structure
       fpp                 # Presents files for selection
-      ranger              # File manager
+      yazi                # File manager
       gcc                 # GNU Compiler Collection
       gnumake             # Controls the generations of executables
       cmake               # Cross-platform open-source build system generator
