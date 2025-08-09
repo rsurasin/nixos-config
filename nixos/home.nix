@@ -39,6 +39,7 @@
 
       pkgs-unstable.tree-sitter    # Parser Generator Tool
       pkgs-unstable.nodejs         # JS runtime environment
+      pkgs-unstable.claude-code    # Claude AI Agent
 
       # Utilities
       brightnessctl       # Control device brightness
