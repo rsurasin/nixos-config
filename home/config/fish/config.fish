@@ -62,6 +62,7 @@ abbr -a gtd "git tag -d"
 abbr -a tl "tmux ls"
 abbr -a tn "tmux new -s"
 abbr -a ta "tmux attach -t"
+abbr -a co "claude"
 
 # Enalble Zoxide (smarter cd) - Needs to be at the end of the file
 zoxide init fish | source
