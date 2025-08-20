@@ -18,10 +18,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # WSL support
-    # WSL-specific nixpkgs (24.11 for WSL compatibility)
-    nixpkgs-wsl.url = "github:nixos/nixpkgs/nixos-24.11";
+    # WSL-specific nixpkgs (25.05 for WSL compatibility)
+    nixpkgs-wsl.url = "github:nixos/nixpkgs/nixos-25.05";
     home-manager-wsl = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-wsl";
     };
     nixos-wsl = {
@@ -96,7 +96,7 @@
         ];
       };
 
-      # WSL configuration with NixOS 24.11
+      # WSL configuration for NixOS
       wsl = lib-wsl.nixosSystem {
         inherit system;
         pkgs = pkgs-wsl;

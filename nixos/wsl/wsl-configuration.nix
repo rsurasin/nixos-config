@@ -26,12 +26,14 @@
     "/share/fish"
   ];
 
-  # Installing Fonts (works in WSL for terminal applications)
+  # Installing Fonts
   fonts = {
+    #fontconfig.enable = true;
     packages = with pkgs; [
       jetbrains-mono
       roboto
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ]; })
+      nerd-fonts.symbols-only
+      nerd-fonts.jetbrains-mono
     ];
   };
 
