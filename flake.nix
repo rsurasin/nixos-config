@@ -18,10 +18,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # WSL support
-    # WSL-specific nixpkgs (25.05 for WSL compatibility)
-    nixpkgs-wsl.url = "github:nixos/nixpkgs/nixos-25.05";
+    # WSL-specific nixpkgs (25.11 for WSL compatibility)
+    nixpkgs-wsl.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager-wsl = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-wsl";
     };
     nixos-wsl = {
