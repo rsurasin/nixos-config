@@ -126,7 +126,7 @@
   };
 
   # Fish config (functions)
-  home.file.".config/fish/functions/key-bindings.fish".source = ../home/config/fish/functions/key-bindings.fish;
+  home.file.".config/fish/functions/fzf_key_bindings.fish".source = ../home/config/fish/functions/fzf_key_bindings.fish;
 
   # Starship config
   home.file.".config/starship.toml".source = ../home/config/starship.toml;
