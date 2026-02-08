@@ -1,4 +1,12 @@
-{ config, lib, pkgs, pkgs-unstable, user, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-unstable,
+  user,
+  inputs,
+  ...
+}:
 
 {
   home = {
@@ -9,38 +17,38 @@
 
     packages = with pkgs; [
       # Dev Tools
-      fish                # Shell
-      starship            # Shell Prompt
-      neovim              # Editor
-      tmux                # Terminal Multiplexer
-      fzf                 # Fuzzy Finder
-      bat                 # cat replacement
-      ripgrep             # grep replacement
-      fd                  # find replacement
-      eza                 # ls replacement
-      tealdeer            # Simplified man pages
-      tree                # Show file structure
-      fpp                 # Presents files for selection
-      yazi                # File manager
-      gcc                 # GNU Compiler Collection
-      gnumake             # Controls the generations of executables
-      cmake               # Cross-platform open-source build system generator
-      git-crypt           # Encryption for git
-      zoxide              # Smarter cd
+      fish # Shell
+      starship # Shell Prompt
+      neovim # Editor
+      tmux # Terminal Multiplexer
+      fzf # Fuzzy Finder
+      bat # cat replacement
+      ripgrep # grep replacement
+      fd # find replacement
+      eza # ls replacement
+      tealdeer # Simplified man pages
+      tree # Show file structure
+      fpp # Presents files for selection
+      yazi # File manager
+      gcc # GNU Compiler Collection
+      gnumake # Controls the generations of executables
+      cmake # Cross-platform open-source build system generator
+      git-crypt # Encryption for git
+      zoxide # Smarter cd
 
-      pkgs-unstable.tree-sitter    # Parser Generator Tool
-      pkgs-unstable.nodejs         # JS runtime environment
-      pkgs-unstable.claude-code    # Claude AI Agent
+      pkgs-unstable.tree-sitter # Parser Generator Tool
+      pkgs-unstable.nodejs # JS runtime environment
+      inputs.claude-code.packages.${pkgs.system}.claude-code # Claude AI Agent; Using native installer
 
       # Utilities
-      btop                # System Monitoring
+      btop # System Monitoring
 
       # Language Servers
       rust-analyzer
       pyright
       lua-language-server
       typescript-language-server
-      vscode-langservers-extracted        # eslint, html, css, & json
+      vscode-langservers-extracted # eslint, html, css, & json
       dockerfile-language-server-nodejs
       yaml-language-server
       gopls
@@ -106,7 +114,8 @@
   };
 
   # Fish config (functions)
-  home.file.".config/fish/functions/fzf_key_bindings.fish".source = ../../home/config/fish/functions/fzf_key_bindings.fish;
+  home.file.".config/fish/functions/fzf_key_bindings.fish".source =
+    ../../home/config/fish/functions/fzf_key_bindings.fish;
 
   # Starship config
   home.file.".config/starship.toml".source = ../../home/config/starship.toml;
