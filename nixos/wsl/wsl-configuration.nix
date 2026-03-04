@@ -73,7 +73,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "Rahul Surasinghe";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     shell = pkgs.fish;
   };
   programs.fish.enable = true;
@@ -86,6 +86,9 @@
     xdg-utils
     wslu # WSL utilities
   ];
+
+  # Integrate with Docker Desktop on Windows
+  wsl.docker-desktop.enable = true;
 
   # Enable systemd user services
   services.dbus.enable = true;
