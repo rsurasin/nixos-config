@@ -34,6 +34,7 @@
       gnumake # Controls the generations of executables
       cmake # Cross-platform open-source build system generator
       git-crypt # Encryption for git
+      gh # GitHub CLI tool
       zoxide # Smarter cd
 
       pkgs-unstable.tree-sitter # Parser Generator Tool
